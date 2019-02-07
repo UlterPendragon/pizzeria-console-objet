@@ -1,10 +1,10 @@
-package fr.pizzeria.console;
+package fr.pizzeria.modele;
 
 public class Pizza {
-	int id;
-	String code;
-	String libellee;
-	double prix;
+	public int id;
+	public String code;
+	public String libellee;
+	public double prix;
 
 	public Pizza(String code, String libellee, double prix)	{
 		this.code = code;
