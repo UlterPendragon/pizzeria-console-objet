@@ -1,6 +1,8 @@
 package fr.pizzeria.modele;
 
 public class Pizza {
+	public static int nbPizza;
+
 	public int id;
 	public String code;
 	public String libellee;
@@ -11,7 +13,7 @@ public class Pizza {
 		this.libellee = libellee;
 		this.prix = prix;
 	}
-	
+
 	public Pizza(int id, String code, String libellee, double prix)	{
 		this.id = id;
 		this.code = code;

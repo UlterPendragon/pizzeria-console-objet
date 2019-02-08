@@ -29,8 +29,8 @@ public class PizzeriaAdminConsoleApp {
 			System.out.println("2. Ajout d'une nouvelle pizza");
 			System.out.println("3. Mise à jour d'une pizza");
 			System.out.println("4. Suppression d’une pizza");
-			System.out.println("5. Le code de la pizza existe t-il ? ");
-			System.out.println("99.Exit.");
+		//	System.out.println("5. Le code de la pizza existe t-il ? ");   cas 5 non créé dans MenuServiceFactory
+			System.out.println("99. Exit");
 
 			choice = choiceMenu.nextInt();
 

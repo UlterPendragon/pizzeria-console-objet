@@ -1,5 +1,6 @@
 package fr.pizzeria.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
@@ -10,11 +11,14 @@ public class ListerPizzaService extends MenuService {
 	@Override
 	public void executeUC(IPizzaDao pizzaDao, Scanner scanner) {
 
-		Pizza[] pizzas = pizzaDao.findAllPizzas();
+		List<Pizza> pizzas = pizzaDao.findAllPizzas();
 		System.out.println("Liste des pizzas:");
-		for (int i = 0; i < pizzas.length; i++){
-			System.out.println(pizzas[i].code + " -> " + pizzas[i].libellee + " (" + pizzas[i].prix + " )");
+		for (Pizza p: pizzas){
+
+		System.out.println(p.code + " -> " + p.libellee + " (" + p.prix + " )");
+		
 		}
+	
 
 	}
 
