@@ -3,11 +3,12 @@ package fr.pizzeria.service;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.DeletePizzaException;
 
 public class SupprimerPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(IPizzaDao pizzaDao, Scanner scanner) {
+	public void executeUC(IPizzaDao pizzaDao, Scanner scanner) throws DeletePizzaException {
 		// TODO Auto-generated method stub
 		scanner.nextLine(); //pour éviter le bug du clavier
 		

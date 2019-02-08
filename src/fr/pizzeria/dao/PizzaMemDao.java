@@ -2,6 +2,10 @@ package fr.pizzeria.dao;
 
 import java.util.*;
 
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.modele.Pizza;
 
 
@@ -41,23 +45,30 @@ public class PizzaMemDao implements IPizzaDao{
 
 	// pour enregistrer de nouvelles les pizzas
 	@Override
-	public void saveNewPizza(Pizza pizza) {
+	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+
+		if(pizzaExists(pizza.code)){
+			throw new SavePizzaException("la pizza existe déjà");
+		}
 		listePizza.add(pizza);
 	}
 
 	// pour mettre à jour des pizzas
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza) {
-		Pizza pizzaToUpdate = findPizzaByCode(codePizza);
-		
+	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
+		Pizza pizzaToUpdate;
+		try {
+			pizzaToUpdate = findPizzaByCode(codePizza);
+		} catch (StockageException e) {
+			throw new UpdatePizzaException("La pizza à modifier n'a pas été trouvée");
+		}
 		listePizza.set(listePizza.indexOf(pizzaToUpdate), pizza);
-		
 	}
 
 	// pour supprimer des pizzas
 	@Override
 	// Iterator pour dérouler la liste
-	public void deletePizza(String codePizza) {
+	public void deletePizza(String codePizza) throws DeletePizzaException {
 		Iterator<Pizza> iteratorPizza = listePizza.iterator();
 		while (iteratorPizza.hasNext()){
 			Pizza maPizza = iteratorPizza.next();
@@ -70,7 +81,7 @@ public class PizzaMemDao implements IPizzaDao{
 
 	// pour chercher des pizza avec le code
 	@Override
-	public Pizza findPizzaByCode(String codePizza) {
+	public Pizza findPizzaByCode(String codePizza) throws StockageException {
 		Iterator<Pizza> iteratorPizza = listePizza.iterator();
 		while (iteratorPizza.hasNext()){
 			Pizza maPizza = iteratorPizza.next();
@@ -79,12 +90,25 @@ public class PizzaMemDao implements IPizzaDao{
 				return maPizza;
 			}
 		}
-		return null;
+		throw new StockageException("pizza non trouvée");
+	}
+
+	@Override
+	public boolean pizzaExists(String codePizza) {
+		Iterator<Pizza> iteratorPizza = listePizza.iterator();
+		while (iteratorPizza.hasNext()){
+			Pizza maPizza = iteratorPizza.next();
+			if (codePizza.equals(maPizza.code)){
+				iteratorPizza.next();
+				return true;
+			} 
+		}
+		return false;
 	}
 
 	/* 
 	ATTENTION : Ce Code n'est pas initialisé dans MenuServiceFactory (car cas 5 actuellement inexistant)
-	
+
 	// pour vérifier que le code de la pizza existe 
 	@Override
 	public boolean pizzaExists(String codePizza) {
@@ -98,5 +122,5 @@ public class PizzaMemDao implements IPizzaDao{
 			}
 		return false;
 	}
-	*/
+	 */
 }
