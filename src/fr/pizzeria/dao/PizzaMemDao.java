@@ -6,6 +6,7 @@ import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
 
@@ -15,21 +16,21 @@ public class PizzaMemDao implements IPizzaDao{
 	private ArrayList<Pizza> listePizza = new ArrayList<Pizza>();
 
 	public PizzaMemDao(){
-		Pizza p0 = new Pizza(0, "PEP", "Pépéroni", 12.50);
+		Pizza p0 = new Pizza(0, "PEP", "Pépéroni", CategoriePizza.VIANDE, 12.50);
 		listePizza.add(p0);
-		Pizza p1 = new Pizza(1, "MAR", "Margherita", 14.00);
+		Pizza p1 = new Pizza(1, "MAR", "Margherita", CategoriePizza.SANS_VIANDE, 14.00);
 		listePizza.add(p1);
-		Pizza p2 = new Pizza(2, "REIN", "La Reine", 11.50);
+		Pizza p2 = new Pizza(2, "REIN", "La Reine", CategoriePizza.VIANDE, 11.50);
 		listePizza.add(p2);
-		Pizza p3 = new Pizza(3, "FRO", "La 4 fromages", 12.00);
+		Pizza p3 = new Pizza(3, "FRO", "La 4 fromages", CategoriePizza.SANS_VIANDE, 12.00);
 		listePizza.add(p3);
-		Pizza p4 = new Pizza(4, "CAN", "La cannibale", 12.50);
+		Pizza p4 = new Pizza(4, "CAN", "La cannibale", CategoriePizza.VIANDE, 12.50);
 		listePizza.add(p4);
-		Pizza p5 = new Pizza(5, "SAV", "La savoyarde", 13.00);
+		Pizza p5 = new Pizza(5, "SAV", "La savoyarde", CategoriePizza.VIANDE, 13.00);
 		listePizza.add(p5);
-		Pizza p6 = new Pizza(6, "ORI", "L'orientale", 13.50);
+		Pizza p6 = new Pizza(6, "ORI", "L'orientale", CategoriePizza.POISSON, 13.50);
 		listePizza.add(p6);
-		Pizza p7 = new Pizza(7, "IND", "L'indienne", 14.00);
+		Pizza p7 = new Pizza(7, "IND", "L'indienne", CategoriePizza.SANS_VIANDE, 14.00);
 		listePizza.add(p7);
 	} 
 
@@ -64,7 +65,7 @@ public class PizzaMemDao implements IPizzaDao{
 		}
 		listePizza.set(listePizza.indexOf(pizzaToUpdate), pizza);
 	}
-
+	
 	// pour supprimer des pizzas
 	@Override
 	// Iterator pour dérouler la liste
@@ -72,7 +73,7 @@ public class PizzaMemDao implements IPizzaDao{
 		Iterator<Pizza> iteratorPizza = listePizza.iterator();
 		while (iteratorPizza.hasNext()){
 			Pizza maPizza = iteratorPizza.next();
-			// condition si code entré correspond à un object pizza (une des pizzas) de la liste
+			// condition si code entré correspond à un objet pizza (une des pizzas) de la liste
 			if (codePizza.equals(maPizza.code)){
 				iteratorPizza.remove();
 			}

@@ -13,8 +13,6 @@ public class MenuServiceFactory {
 		case 4:
 			return new SupprimerPizzaService();
 		}
-		
-		
 		return null;
 	}
 }
