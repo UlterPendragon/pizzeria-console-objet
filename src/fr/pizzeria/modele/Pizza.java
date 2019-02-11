@@ -7,6 +7,7 @@ public class Pizza {
 	public String code;
 	public String libellee;
 	public double prix;
+	public CategoriePizza categorie;
 
 	public Pizza(String code, String libellee, double prix)	{
 		this.code = code;
@@ -20,9 +21,7 @@ public class Pizza {
 		this.libellee = libellee;
 		this.prix = prix;
 	}
-	
-	public CategoriePizza categorie;
-	
+		
 	
 	private CategoriePizza getCategorie() {
 		return categorie;

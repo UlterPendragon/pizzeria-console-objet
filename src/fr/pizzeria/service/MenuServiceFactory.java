@@ -12,6 +12,8 @@ public class MenuServiceFactory {
 			return new ModifierPizzaService();
 		case 4:
 			return new SupprimerPizzaService();
+		case 5:
+			return new CodeExistant();
 		}
 		return null;
 	}

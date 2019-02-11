@@ -4,13 +4,9 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.modele.Pizza;
-import fr.pizzeria.service.AjouterPizzaService;
-import fr.pizzeria.service.ListerPizzaService;
 import fr.pizzeria.service.MenuService;
 import fr.pizzeria.service.MenuServiceFactory;
-import fr.pizzeria.service.ModifierPizzaService;
-import fr.pizzeria.service.SupprimerPizzaService;
+
 
 public class PizzeriaAdminConsoleApp {
 
@@ -30,7 +26,7 @@ public class PizzeriaAdminConsoleApp {
 			System.out.println("2. Ajout d'une nouvelle pizza");
 			System.out.println("3. Mise à jour d'une pizza");
 			System.out.println("4. Suppression d’une pizza");
-			//	System.out.println("5. Le code de la pizza existe t-il ? ");   cas 5 non créé dans MenuServiceFactory
+			System.out.println("5. Le code de la pizza existe t-il ? ");  
 			System.out.println("99. Exit");
 
 			choice = choiceMenu.nextInt();
@@ -50,7 +46,7 @@ public class PizzeriaAdminConsoleApp {
 				break;
 			}
 		}
-		System.out.println("Bye Bye :) !");
+		System.out.println("Bye Bye :) ");
 	}
 }
 

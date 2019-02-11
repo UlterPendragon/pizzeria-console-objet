@@ -93,7 +93,8 @@ public class PizzaMemDao implements IPizzaDao{
 		}
 		throw new StockageException("pizza non trouvée");
 	}
-
+	
+	// pour vérifier que le code de la pizza existe 
 	@Override
 	public boolean pizzaExists(String codePizza) {
 		Iterator<Pizza> iteratorPizza = listePizza.iterator();
@@ -105,23 +106,7 @@ public class PizzaMemDao implements IPizzaDao{
 			} 
 		}
 		return false;
-	}
-
-	/* 
-	ATTENTION : Ce Code n'est pas initialisé dans MenuServiceFactory (car cas 5 actuellement inexistant)
-
-	// pour vérifier que le code de la pizza existe 
-	@Override
-	public boolean pizzaExists(String codePizza) {
-		// TODO Auto-generated method stub
-			Iterator<Pizza> iteratorPizza = listePizza.iterator();
-			while (iteratorPizza.hasNext()){
-				Pizza maPizza = iteratorPizza.next();
-				if (codePizza.equals(maPizza.code)){
-				}
-				return true;
-			}
-		return false;
-	}
-	 */
+	}	
 }
+	 
+
